@@ -22,7 +22,7 @@ def allocate_clusters(vectors, centroids):
 
 
 def average_centroids_distance(clusters: dict):
-    return sum([distance(x, y) for x in clusters.keys() for y in clusters.keys()]) / len(clusters)
+    return sum([distance(x, y) for x in clusters.keys() for y in clusters.keys()]) / (len(clusters)**2)
 
 
 def get_new_centroid_index(vectors, clusters):
@@ -31,7 +31,7 @@ def get_new_centroid_index(vectors, clusters):
     for centroid in clusters.keys():
         maxes.append(max(((i, distance(centroid, vectors[i])) for i in clusters[centroid]), key=(lambda x: x[1])))
     true_max = max(maxes, key=(lambda x: x[1]))
-    if true_max[1] > average_centroids_distance(clusters) / 2:
+    if true_max[1] > (average_centroids_distance(clusters) / 2):
         result = true_max[0]
     return result
 

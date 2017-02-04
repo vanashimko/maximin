@@ -25,8 +25,10 @@ def main():
     vectors = read_vectors(argv[1])
     output_name = argv[2]
     if vectors:
+        print('Calculating...')
         clusters = maximin(vectors)
         if len(vectors[0]) == 2:
+            print('Drawing...')
             display_result(vectors, clusters)
         write_result(vectors, clusters, output_name)
     else:
