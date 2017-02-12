@@ -10,7 +10,7 @@ def display_result(vectors, clusters):
         xs = list(map(lambda x: x[0], current_cluster))
         ys = list(map(lambda x: x[1], current_cluster))
         for vector in current_cluster:
-            plt.plot([vector[0], centroid[0]], [vector[1], centroid[1]], c=colors[cluster_index], linewidth=1)
+            plt.plot((vector[0], centroid[0]), (vector[1], centroid[1]), c=colors[cluster_index], linewidth=1)
         plt.scatter(xs, ys, c=colors[cluster_index], marker='.')
         plt.plot(centroid[0], centroid[1], c=centroids_colors[cluster_index], marker='x')
     plt.show()
