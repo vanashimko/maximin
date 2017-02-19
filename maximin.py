@@ -2,6 +2,7 @@ from math import sqrt
 from random import randrange
 from collections import defaultdict
 from statistics import mean
+from itertools import combinations
 
 
 def distance(a, b):
@@ -21,9 +22,10 @@ def allocate_clusters(vectors, centroids):
 def average_centroids_distance(clusters):
     centroids = list(clusters.keys())
     if len(centroids) > 1:
-        return mean((distance(x, y) for i, x in enumerate(centroids) for y in centroids[i+1:]))
+        return mean((distance(x, y) for x, y in combinations(centroids, 2)))
     else:
         return 0
+
 
 
 def get_new_centroid_index(vectors, clusters):
